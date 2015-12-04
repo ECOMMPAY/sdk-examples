@@ -5,7 +5,7 @@ const SALT = 'askdfjlaIAuhahsk9891823912'; // Salt ("соль") сайта
 
 // пример PHP кода, формирующего url запроса на терминал с выводом его в html button
 
-// Подключение библиотеки генерации подписи (находится в папке /signgen)
+// Подключение библиотеки генерации подписи (находится в папке examples/signgen)
 require_once '/path/to/devcookies/SignatureGenerator.php';
 use devcookies\SignatureGenerator;
 
@@ -18,7 +18,7 @@ $params = array(
 	'currency' => 'RUB',
 	'external_id' => 'TEST_12345677',
 );
-$params['signature'] = $signer->assemble($params); //Добавление подписи
+$params['signature'] = $signer->assemble($params); // Добавление подписи
 
 // Если у вас в настройках сайта ВЫКЛЮЧЕНЫ какие-либо из перечисленных ниже параметров,
 // их добавлять здесь. Уточните этот момент у технической поддержки
