@@ -1,12 +1,13 @@
 <?php
 
+// Пример PHP кода, формирующего url запроса на терминал с выводом его в html button
+
 const URL = 'https://terminal-sandbox.ipsp.tld/'; // URL, на который шлём запрос
 const SALT = 'askdfjlaIAuhahsk9891823912'; // Salt ("соль") сайта
 
-// пример PHP кода, формирующего url запроса на терминал с выводом его в html button
-
-// Подключение библиотеки генерации подписи (находится в папке examples/signgen)
-require_once '/path/to/devcookies/SignatureGenerator.php';
+// Подключение библиотеки генерации подписи
+// воспользуйтесь командой composer install
+require_once 'vendor/autoload.php';
 use devcookies\SignatureGenerator;
 
 $signer = new SignatureGenerator(SALT); // Инициализация генератора подписи
@@ -20,7 +21,7 @@ $params = array(
 );
 $params['signature'] = $signer->assemble($params); // Добавление подписи
 
-// Если у вас в настройках сайта ВЫКЛЮЧЕНЫ какие-либо из перечисленных ниже параметров,
+// Если у вас в настройках сайта исключены из подписи какие-либо из перечисленных ниже параметров,
 // их добавлять здесь. Уточните этот момент у технической поддержки
 $unsigned = array(
 //	'email' => 'sherlock@example.com',
@@ -33,6 +34,8 @@ $unsigned = array(
 );
 
 $result = array_merge($params, $unsigned);
+
+// Выберите один из двух приведенных ниже вариантов
 
 // Вариант с GET-запросом
 $url = URL .'?'. http_build_query($result);
