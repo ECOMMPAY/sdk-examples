@@ -30,7 +30,7 @@ $unsigned = array(
 //	'billing_city' => 'London',
 //	'billing_address' => '221B Baker street',
 //	'billing_postal' => 'NW1NW1',
-//	'billing_phone' => '+7-100-200-30-40'
+//	'billing_phone' => '4952003040'
 );
 
 $result = array_merge($params, $unsigned);
