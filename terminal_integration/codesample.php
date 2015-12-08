@@ -12,7 +12,7 @@ use devcookies\SignatureGenerator;
 
 $signer = new SignatureGenerator(SALT); // Инициализация генератора подписи
 
-// Массив с передаваемыми параметрами, за исключением неподписываемых
+// Массив с передаваемыми параметрами
 $params = array(
 	'site_id' => '1',
 	'amount' => '1000',
