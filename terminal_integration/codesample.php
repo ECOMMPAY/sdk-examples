@@ -23,7 +23,7 @@ $params['signature'] = $signer->assemble($params); // Signature adding
 
 // Choose one of two options below
 
-// GET request option. May not work in IE with more than 2kb transfered data
+// GET request option. It may not work in IE with more than 2kb transfered data
 $url = URL .'?'. http_build_query($params);
 echo "<button onclick=\"location.href='{$url}';\">Send</button>";
 
