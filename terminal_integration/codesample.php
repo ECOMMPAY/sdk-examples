@@ -1,38 +1,37 @@
 <?php
 
-// Пример PHP кода, формирующего url запроса на терминал с выводом его в html button
+// Generator of a terminal request URL as HTML button. PHP example.
 
-const URL = 'https://terminal-sandbox.ipsp.tld/'; // URL, на который шлём запрос
-const SALT = 'askdfjlaIAuhahsk9891823912'; // Salt ("соль") сайта
+const URL = 'https://terminal-sandbox.ipsp.tld/'; // Request target URL
+const SALT = 'askdfjlaIAuhahsk9891823912'; // Your site salt
 
-// Подключение библиотеки генерации подписи
-// воспользуйтесь командой composer install
+// Signature generator library setup
+// Use 'composer install' cli command
 require_once 'vendor/autoload.php';
 use devcookies\SignatureGenerator;
 
-$signer = new SignatureGenerator(SALT); // Инициализация генератора подписи
+$signer = new SignatureGenerator(SALT); // Signature generator initialization
 
-// Массив с передаваемыми параметрами
+// Array of input parameters
 $params = array(
 	'site_id' => '1',
 	'amount' => '1000',
 	'currency' => 'RUB',
 	'external_id' => 'TEST_12345677',
 );
-$params['signature'] = $signer->assemble($params); // Добавление подписи
+$params['signature'] = $signer->assemble($params); // Signature adding
 
-// Выберите один из двух приведенных ниже вариантов
+// Choose one of two options below
 
-// Вариант с GET-запросом
+// GET request option. It may not work in IE with more than 2kb transfered data
 $url = URL .'?'. http_build_query($params);
-echo "<button onclick=\"location.href='{$url}';\">Отправить</button>";
+echo "<button onclick=\"location.href='{$url}';\">Send</button>";
 
-// Вариант с POST-запросом,
-// если количество передаваемых данных >2kb, GET-запрос может не работать в IE
+// POST request option
 ?>
 <form method="post" action="<?=URL;?>">
 <?php foreach ($params as $name => $value): ?>
 	<input type="hidden" name="<?=$name; ?>" value="<?=$value;?>">
 <?php endforeach;?>
-	<button type="submit">Отправить</button>
+	<button type="submit">Send</button>
 </form>
