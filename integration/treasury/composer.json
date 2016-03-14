@@ -1,0 +1,19 @@
+{
+    "name": "paymantix/sample",
+    "description": "treasury integration sample",
+    "authors": [
+        {
+            "name": "developer",
+            "email": "dev@paymantix.com"
+        }
+    ],
+    "require": {
+        "sdk/libs": "dev-master"
+    },
+    "repositories":[
+        {
+            "type":"vcs",
+            "url":"https://stash.paymantix.com/scm/sdk/libs.git"
+        }
+    ]
+}
